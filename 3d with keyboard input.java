@@ -1,20 +1,17 @@
 import processing.core.*;
 
 float angleX, angleY, angleZ;
-float rotationSpeed = 0.01;
-float sensitivity = 0.01;
-float prevMouseX, prevMouseY;
+float rotationSpeed = 0.01; // mengatur kecepatan rotasi 
+float sensitivity = 0.01; // mengatur sensitivitas 
 
 void setup() {
   size(800, 600, P3D);
-  prevMouseX = mouseX;
-  prevMouseY = mouseY;
 }
 
 void draw() {
-  background(0, 0, 0);
-  lights();
-  translate(width/2, height/2, 0);
+  background(0, 0, 0); // hitam 
+  lights(); // mengaktifkan pencahayaan 
+  translate(width/2, height/2, 0); // memusatkan titik objek ke tengah
   rotateX(angleX);
   rotateY(angleY);
   rotateZ(angleZ);
@@ -34,19 +31,12 @@ void draw() {
   box(40, 120, 50);    //'/'
   popMatrix();
 
-  // Menggerakkan huruf dengan input mouse
-  float deltaX = mouseX - prevMouseX;
-  float deltaY = mouseY - prevMouseY;
-
-  angleY += deltaX * sensitivity;
-  angleX += deltaY * sensitivity;
-
   // Keyboard input for pitch, yaw, and roll
   // pitch down  = s 
   // yaw left = a
   // yaw right = d 
   // roll left 
-  // rol right 
+  // roll right 
 
   if (keyPressed) {
     if (key == 'w' || key == 'W') {  // Pitch up
@@ -63,8 +53,4 @@ void draw() {
       angleZ += rotationSpeed;
     }
   }
-
-  prevMouseX = mouseX;
-  prevMouseY = mouseY;
 }
-
